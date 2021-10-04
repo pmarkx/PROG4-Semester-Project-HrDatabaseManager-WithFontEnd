@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DCQEB4_HFT_2021221.Models\DCQEB4_HFT_2021221.Models.csproj" />
+    <ProjectReference Include="..\DCQEB4_HFT_2021221.Repository\DCQEB4_HFT_2021221.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
