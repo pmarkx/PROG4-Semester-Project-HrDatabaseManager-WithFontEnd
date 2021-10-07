@@ -22,11 +22,13 @@ namespace DCQEB4_HFT_2021221.Models
         [Required]
         public DepartmentType Type { get; set; }
 
-        [ForeignKey(nameof(Employee))]
-        public int EmployeeID { get; set; }
-
         [NotMapped]
-        public virtual Employee Employee { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
+
+        public Department()
+        {
+            Employees = new HashSet<Employee>();
+        }
 
     }
 }
