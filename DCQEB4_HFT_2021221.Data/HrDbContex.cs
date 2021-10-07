@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DCQEB4_HFT_2021221.Data
 {
-    class HrDbContex:DbContext
+    public class HrDbContex:DbContext
     {
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
@@ -98,37 +98,37 @@ namespace DCQEB4_HFT_2021221.Data
 
             modelBuilder.Entity<Department>().HasData(it,finance,legal);
             modelBuilder.Entity<Employee>().HasData(employee1,employee2,employee3,employee4, employee5, employee6, employee7, employee8, employee9, employee10, employee11, employee12);
-            modelBuilder.Entity<Salary>().HasData(salary1,salary2,
-                salary3,
-                salary4,
-                salary5,
-                salary6,
-                salary7,
-                salary8,
-                salary9,
-                salary10,
-                salary11,
-                salary12,
-                salary13,
-                salary14,
-                salary15,
-                salary16,
-                salary17,
-                salary18,
-                salary19,
-                salary20,
-                salary21,
-                salary22,
-                salary23,
-                salary24,
-                salary25,
-                salary26,
-                salary27,
-                salary28,
-                salary29,
-                salary30,
-                salary31,
-                salary32);
+        //    modelBuilder.Entity<Salary>().HasData(salary1,salary2,
+        //        salary3,
+        //        salary4,
+        //        salary5,
+        //        salary6,
+        //        salary7,
+        //        salary8,
+        //        salary9,
+        //        salary10,
+        //        salary11,
+        //        salary12,
+        //        salary13,
+        //        salary14,
+        //        salary15,
+        //        salary16,
+        //        salary17,
+        //        salary18,
+        //        salary19,
+        //        salary20,
+        //        salary21,
+        //        salary22,
+        //        salary23,
+        //        salary24,
+        //        salary25,
+        //        salary26,
+        //        salary27,
+        //        salary28,
+        //        salary29,
+        //        salary30,
+        //        salary31,
+        //        salary32);
         }
 
     }
