@@ -21,7 +21,7 @@ namespace DCQEB4_HFT_2021221.Models
         public string Email { get; set; }
 
         [ForeignKey(nameof(Department))]
-        public string DepartmentID { get; set; }
+        public int DepartmentID { get; set; }
 
         [NotMapped]
         public virtual Department Department { get; set; }
