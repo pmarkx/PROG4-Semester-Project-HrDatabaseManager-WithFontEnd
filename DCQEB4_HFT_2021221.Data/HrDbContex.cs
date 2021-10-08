@@ -22,7 +22,8 @@ namespace DCQEB4_HFT_2021221.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;MultipleActiveResultSets=True");
+                //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\MarkPapp\source\repos\DCQEB4_HFT_2021221\DCQEB4_HFT_2021221.Data\Database.mdf;Integrated Security=True
+                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\MarkPapp\source\repos\DCQEB4_HFT_2021221\DCQEB4_HFT_2021221.Data\Database.mdf;Integrated Security=True;MultipleActiveResultSets=True");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -74,12 +75,12 @@ namespace DCQEB4_HFT_2021221.Data
             Salary salary13 = new Salary() { ID = 13, BaseSalary = 1000, Bonus = 1, EmployeeID = employee5.ID, Date = new DateTime(2021, 3, 14) };
             Salary salary14 = new Salary() { ID = 14, BaseSalary = 1000, Bonus = 10, EmployeeID = employee5.ID, Date = new DateTime(2021, 4, 14) };
             Salary salary15 = new Salary() { ID = 15, BaseSalary = 1000, Bonus = 10, EmployeeID = employee5.ID, Date = new DateTime(2021, 5, 14) };
-            Salary salary16 = new Salary() { ID = 16, BaseSalary = 1000, EmployeeID = employee6.ID, Date = new DateTime(2021, 3, 14) };
+            Salary salary16 = new Salary() { ID = 16, BaseSalary = 1000, Bonus = 10, EmployeeID = employee6.ID, Date = new DateTime(2021, 3, 14) };
             Salary salary17 = new Salary() { ID = 17, BaseSalary = 1000, Bonus = 10, EmployeeID = employee6.ID, Date = new DateTime(2021, 4, 14) };
             Salary salary18 = new Salary() { ID = 18, BaseSalary = 1000, Bonus = 10, EmployeeID = employee6.ID, Date = new DateTime(2021, 5, 14) };
             Salary salary19 = new Salary() { ID = 19, BaseSalary = 1000, Bonus = 10, EmployeeID = employee7.ID, Date = new DateTime(2021, 3, 14) };
             Salary salary20 = new Salary() { ID = 20, BaseSalary = 1000, Bonus = 10, EmployeeID = employee7.ID, Date = new DateTime(2021, 4, 14) };
-            Salary salary21 = new Salary() { ID = 21, BaseSalary = 1000, EmployeeID = employee7.ID, Date = new DateTime(2021, 5, 14) };
+            Salary salary21 = new Salary() { ID = 21, BaseSalary = 1000, Bonus = 10, EmployeeID = employee7.ID, Date = new DateTime(2021, 5, 14) };
             Salary salary22 = new Salary() { ID = 22, BaseSalary = 1000, Bonus = 10, EmployeeID = employee8.ID, Date = new DateTime(2021, 3, 14) };
             Salary salary23 = new Salary() { ID = 23, BaseSalary = 1000, Bonus = 10, EmployeeID = employee8.ID, Date = new DateTime(2021, 4, 14) };
             Salary salary24 = new Salary() { ID = 24, BaseSalary = 1000, Bonus = 10, EmployeeID = employee8.ID, Date = new DateTime(2021, 5, 14) };
@@ -91,7 +92,7 @@ namespace DCQEB4_HFT_2021221.Data
             Salary salary30 = new Salary() { ID = 30, BaseSalary = 1000, Bonus = 10, EmployeeID = employee10.ID, Date = new DateTime(2021, 5, 14) };
             Salary salary31 = new Salary() { ID = 31, BaseSalary = 1000, Bonus = 10, EmployeeID = employee11.ID, Date = new DateTime(2021, 3, 14) };
             Salary salary32 = new Salary() { ID = 32, BaseSalary = 1000, Bonus = 10, EmployeeID = employee11.ID, Date = new DateTime(2021, 4, 14) };
-            Salary salary33 = new Salary() { ID = 33, BaseSalary = 1000, EmployeeID = employee11.ID, Date = new DateTime(2021, 5, 14) };
+            Salary salary33 = new Salary() { ID = 33, BaseSalary = 1000, Bonus = 10, EmployeeID = employee11.ID, Date = new DateTime(2021, 5, 14) };
             Salary salary34 = new Salary() { ID = 34, BaseSalary = 1000, Bonus = 10, EmployeeID = employee12.ID, Date = new DateTime(2021, 3, 14) };
             Salary salary35 = new Salary() { ID = 35, BaseSalary = 1000, Bonus = 10, EmployeeID = employee12.ID, Date = new DateTime(2021, 4, 14) };
             Salary salary36 = new Salary() { ID = 36, BaseSalary = 1000, Bonus = 10, EmployeeID = employee12.ID, Date = new DateTime(2021, 5, 14) };
