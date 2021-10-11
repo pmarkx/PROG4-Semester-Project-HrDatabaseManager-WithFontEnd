@@ -23,7 +23,7 @@ namespace DCQEB4_HFT_2021221.Data
             if (!optionsBuilder.IsConfigured)
             {
                 //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\MarkPapp\source\repos\DCQEB4_HFT_2021221\DCQEB4_HFT_2021221.Data\Database.mdf;Integrated Security=True
-                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\MarkPapp\source\repos\DCQEB4_HFT_2021221\DCQEB4_HFT_2021221.Data\Database.mdf;Integrated Security=True;MultipleActiveResultSets=True");
+                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;MultipleActiveResultSets=True");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
