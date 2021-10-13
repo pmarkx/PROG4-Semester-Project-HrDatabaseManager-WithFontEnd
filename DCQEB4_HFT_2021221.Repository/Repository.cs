@@ -9,8 +9,8 @@ namespace DCQEB4_HFT_2021221.Repository
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
-        protected HrDbContex contex;
-        public Repository(HrDbContex contex)
+        protected HrDbContext contex;
+        public Repository(HrDbContext contex)
         {
             this.contex = contex;
         }

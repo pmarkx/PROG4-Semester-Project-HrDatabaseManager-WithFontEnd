@@ -19,7 +19,7 @@ namespace DCQEB4_HFT_2021221.Client
         static void Main(string[] args)
         {
 
-            HrDbContex data = new HrDbContex();
+            HrDbContext data = new HrDbContext();
             data.Employees.Select(x => x.Name).ToConsole("1");
             data.Departments.Select(x => x.DepartmentName).ToConsole("2");
             data.Salaries.Select(x => x.ID).ToConsole("3");

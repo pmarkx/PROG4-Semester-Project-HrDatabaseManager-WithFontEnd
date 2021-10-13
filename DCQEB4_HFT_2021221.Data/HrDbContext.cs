@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DCQEB4_HFT_2021221.Data
 {
-    public class HrDbContex:DbContext
+    public class HrDbContext:DbContext
     {
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Salary> Salaries { get; set; }
-        public HrDbContex()
+        public HrDbContext()
         {
             Database.EnsureCreated();
         }

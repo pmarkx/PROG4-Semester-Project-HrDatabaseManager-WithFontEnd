@@ -10,7 +10,7 @@ namespace DCQEB4_HFT_2021221.Repository
 {
     class SalaryRepository : Repository<Salary>, ISalaryRepository
     {
-        public SalaryRepository(HrDbContex contex) : base(contex)
+        public SalaryRepository(HrDbContext contex) : base(contex)
         {
         }
 

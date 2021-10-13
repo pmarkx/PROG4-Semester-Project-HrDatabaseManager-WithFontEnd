@@ -10,7 +10,7 @@ namespace DCQEB4_HFT_2021221.Repository
 {
     class DepartmentRepository : Repository<Department>, IDepartmentRepository
     {
-        public DepartmentRepository(HrDbContex contex) : base(contex)
+        public DepartmentRepository(HrDbContext contex) : base(contex)
         {
         }
 
