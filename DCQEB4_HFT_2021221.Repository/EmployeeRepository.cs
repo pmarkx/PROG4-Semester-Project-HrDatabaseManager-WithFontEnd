@@ -8,7 +8,7 @@ using DCQEB4_HFT_2021221.Data;
 
 namespace DCQEB4_HFT_2021221.Repository
 {
-    class EmployeeRepository : Repository<Employee>, IEmployeeRepository
+    public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
     {
         public EmployeeRepository(HrDbContext contex) : base(contex)
         {

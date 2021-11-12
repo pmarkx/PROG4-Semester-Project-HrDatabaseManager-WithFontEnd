@@ -8,7 +8,7 @@ using DCQEB4_HFT_2021221.Data;
 
 namespace DCQEB4_HFT_2021221.Repository
 {
-    class DepartmentRepository : Repository<Department>, IDepartmentRepository
+    public class DepartmentRepository : Repository<Department>, IDepartmentRepository
     {
         public DepartmentRepository(HrDbContext contex) : base(contex)
         {
