@@ -73,17 +73,21 @@ namespace DCQEB4_HFT_2021221.Logic
 
         public IList<Department> GetAll()
         {
-            throw new NotImplementedException();
+            return depRepo.GetAll().ToList();
         }
 
         public Department GetOne(int id)
         {
-            throw new NotImplementedException();
+            if (id < 1)
+            {
+                throw new ArgumentException("WrongID");
+            }
+            return depRepo.GetOne(id);
         }
 
         public void Update(Department updatedDep)
         {
-            throw new NotImplementedException();
+            depRepo.Update(updatedDep);
         }
     }
 }
