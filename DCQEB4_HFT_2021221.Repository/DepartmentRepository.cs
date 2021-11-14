@@ -38,5 +38,10 @@ namespace DCQEB4_HFT_2021221.Repository
         {
             return GetAll().SingleOrDefault(x => x.ID == id);
         }
+
+        public override Department GetOne(string name)
+        {
+            return GetAll().SingleOrDefault(x => x.DepartmentName == name);
+        }
     }
 }

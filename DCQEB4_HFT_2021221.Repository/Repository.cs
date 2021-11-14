@@ -35,6 +35,11 @@ namespace DCQEB4_HFT_2021221.Repository
 
         public abstract T GetOne(int id);
 
+        public virtual T GetOne(string name) 
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(T entety)
         {
             contex.Update(entety);
