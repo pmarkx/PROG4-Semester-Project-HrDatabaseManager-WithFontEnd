@@ -13,5 +13,6 @@ namespace DCQEB4_HFT_2021221.Repository
         void Update(T entety);
         void Create(T entity);
         void Delete(T entity);
+        void Delete(int id);
     }
 }

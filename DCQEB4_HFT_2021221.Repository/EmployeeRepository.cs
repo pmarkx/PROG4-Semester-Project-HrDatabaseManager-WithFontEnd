@@ -35,6 +35,12 @@ namespace DCQEB4_HFT_2021221.Repository
             contex.SaveChanges();
         }
 
+        public override void Delete(int id)
+        {
+            contex.Set<Employee>().Remove(GetOne(id));
+            contex.SaveChanges();
+        }
+
         public override Employee GetOne(int id)
         {
             return GetAll().SingleOrDefault(x => x.ID == id);

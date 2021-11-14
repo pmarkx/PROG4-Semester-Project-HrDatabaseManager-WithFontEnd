@@ -26,6 +26,8 @@ namespace DCQEB4_HFT_2021221.Repository
             contex.SaveChanges();
         }
 
+        public abstract void Delete(int id);
+
         public IQueryable<T> GetAll()
         {
             return contex.Set<T>();

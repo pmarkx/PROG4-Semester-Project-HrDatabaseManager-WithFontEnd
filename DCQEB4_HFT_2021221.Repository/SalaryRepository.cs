@@ -28,6 +28,12 @@ namespace DCQEB4_HFT_2021221.Repository
             contex.SaveChanges();
         }
 
+        public override void Delete(int id)
+        {
+            contex.Set<Salary>().Remove(GetOne(id));
+            contex.SaveChanges();
+        }
+
         public override Salary GetOne(int id)
         {
             return GetAll().FirstOrDefault(x => x.ID == id);
