@@ -8,9 +8,13 @@ using System.Threading.Tasks;
 
 namespace DCQEB4_HFT_2021221.Logic
 {
-    class SalaryLogic : ISalaryLogic
+    public class SalaryLogic : ISalaryLogic
     {
-        SalaryRepository SalRepo;
+        ISalaryRepository SalRepo;
+        public SalaryLogic(ISalaryRepository salaryLogic)
+        {
+            SalRepo = salaryLogic;
+        }
         public void ChangeDate(int id, DateTime NewDate)
         {
             if (id < 1)

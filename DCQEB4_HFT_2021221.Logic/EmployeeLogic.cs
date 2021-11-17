@@ -8,9 +8,13 @@ using System.Threading.Tasks;
 
 namespace DCQEB4_HFT_2021221.Logic
 {
-    class EmployeeLogic : IEmployeeLogic
+    public class EmployeeLogic : IEmployeeLogic
     {
         IEmployeeRepository EmpRepo;
+        public EmployeeLogic(IEmployeeRepository employeeRepository)
+        {
+            EmpRepo = employeeRepository;
+        }
 
         public void ChangeDepartment(int id, int NewDepID)
         {

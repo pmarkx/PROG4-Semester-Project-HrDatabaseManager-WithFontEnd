@@ -17,6 +17,6 @@ namespace DCQEB4_HFT_2021221.Logic
         void Delete(Department delete);
         void ChangeName(int id, string NewName);
         void ChangeType(int id, DepartmentType Newdeptype);
-        IList<Department> DepartmentCost();
+        IList<DepartmentCost> DepartmentCost();
     }
 }

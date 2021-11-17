@@ -8,9 +8,17 @@ using System.Threading.Tasks;
 
 namespace DCQEB4_HFT_2021221.Logic
 {
-    class DepartmentLogic : IDepartmentLogic
+    public class DepartmentLogic : IDepartmentLogic
     {
         IDepartmentRepository depRepo;
+        IEmployeeRepository emprepo;
+        ISalaryRepository salrepo;
+        public DepartmentLogic(IDepartmentRepository departmentRepository,IEmployeeRepository employeeRepository,ISalaryRepository salaryRepository)
+        {
+            depRepo = departmentRepository;
+            emprepo = employeeRepository;
+            salrepo = salaryRepository;
+        }
         public void ChangeName(int id, string NewName)
         {
             if (id<1)
@@ -56,19 +64,12 @@ namespace DCQEB4_HFT_2021221.Logic
             depRepo.Delete(delete);
         }
 
-        public IList<Department> DepartmentCost()
+        public IList<DepartmentCost> DepartmentCost()
         {
-            //var x = from y in depRepo.GetAll()
-            //        group y by new { y.DepartmentName, y.ID } into g
-            //        select new
-            //        {
-            //            DepartmentName=g.Key.DepartmentName,
-            //            Cost=Math.Round(g.Average(z=>z.Employees.Select(k=>k.Salaries.Select(l=>l.BaseSalary+l.Bonus))),2)
-            //        };
-            //return x.ToList();
-            throw new NotImplementedException();
-
-
+            var a = from x in salrepo.GetAll()
+                    group x by new { x.Employee.DepartmentID,x.Employee.Department.DepartmentName } into qq
+                    select new DepartmentCost{ DepartmentName=qq.Key.DepartmentName,AvargePrice=qq.Average(x=>x.BaseSalary)};
+            return a.ToList();
         }
 
         public IList<Department> GetAll()
