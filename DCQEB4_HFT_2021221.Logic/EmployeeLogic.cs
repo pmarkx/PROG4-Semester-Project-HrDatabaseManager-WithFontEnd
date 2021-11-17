@@ -53,6 +53,18 @@ namespace DCQEB4_HFT_2021221.Logic
             {
                 throw new ArgumentException("WrongID");
             }
+            if (newEmp.Name.Length<=3)
+            {
+                throw new ArgumentException("Name is invalid");
+            }
+            if (!newEmp.Email.Contains("@"))
+            {
+                throw new ArgumentException("Wrong Email");
+            }
+            if (newEmp.DepartmentID<1)
+            {
+                throw new ArgumentException("Wrong Department ID");
+            }
             EmpRepo.Create(newEmp);
         }
 

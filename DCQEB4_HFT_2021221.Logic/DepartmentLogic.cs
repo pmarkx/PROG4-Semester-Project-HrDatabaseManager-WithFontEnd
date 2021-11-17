@@ -41,7 +41,11 @@ namespace DCQEB4_HFT_2021221.Logic
         {
             if (newDep.ID < 1)
             {
-                throw new ArgumentException("New ID mustbe positive");
+                throw new ArgumentException("WrongID");
+            }
+            if (newDep.DepartmentName.Length <= 5)
+            {
+                throw new ArgumentException("Name is invalid");
             }
             depRepo.Create(newDep);
         }

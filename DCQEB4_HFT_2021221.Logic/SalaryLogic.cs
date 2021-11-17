@@ -39,6 +39,14 @@ namespace DCQEB4_HFT_2021221.Logic
             {
                 throw new ArgumentException("WrongID");
             }
+            if (newSal.EmployeeID<1)
+            {
+                throw new ArgumentException("WrongID");
+            }
+            if (newSal.BaseSalary<10)
+            {
+                throw new ArgumentException("Minum salary is required");
+            }
             SalRepo.Create(newSal);
         }
 
