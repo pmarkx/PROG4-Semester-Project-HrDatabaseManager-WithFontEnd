@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DCQEB4_HFT_2021221.Logic
 {
-    interface ISalaryLogic
+    public interface ISalaryLogic
     {
         Salary GetOne(int id);
         IList<Salary> GetAll();
