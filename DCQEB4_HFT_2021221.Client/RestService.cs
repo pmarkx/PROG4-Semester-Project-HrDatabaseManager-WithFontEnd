@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DCQEB4_HFT_2021221.Client
 {
-    class RestService
+    public class RestService
     {
         HttpClient client;
 
@@ -15,6 +15,7 @@ namespace DCQEB4_HFT_2021221.Client
         {
             Init(baseurl);
         }
+
         private void Init(string baseurl)
         {
             client = new HttpClient();
@@ -29,32 +30,35 @@ namespace DCQEB4_HFT_2021221.Client
             }
             catch (HttpRequestException)
             {
-
                 throw new ArgumentException("Endpoint is not available!");
             }
+
         }
+
         public List<T> Get<T>(string endpoint)
         {
-            List<T> item = new List<T>();
+            List<T> items = new List<T>();
             HttpResponseMessage response = client.GetAsync(endpoint).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
-                item = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
+                items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
             }
-            return item;
+            return items;
         }
+
         public T GetSingle<T>(string endpoint)
         {
             T item = default(T);
+
             HttpResponseMessage response = client.GetAsync(endpoint).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
                 item = response.Content.ReadAsAsync<T>().GetAwaiter().GetResult();
-
             }
             return item;
         }
-        public T Get<T>(int id,string endpoint)
+
+        public T Get<T>(int id, string endpoint)
         {
             T item = default(T);
             HttpResponseMessage response = client.GetAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
@@ -64,24 +68,30 @@ namespace DCQEB4_HFT_2021221.Client
             }
             return item;
         }
-        public void Post<T>(T item,string endpoint)
+
+        public void Post<T>(T item, string endpoint)
         {
             HttpResponseMessage response =
                 client.PostAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
+
             response.EnsureSuccessStatusCode();
         }
-        public void Delete(int id,string endpoint)
+
+        public void Delete(int id, string endpoint)
         {
             HttpResponseMessage response =
                 client.DeleteAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
+
             response.EnsureSuccessStatusCode();
         }
-        public void Put<T>(T item,string endpoint)
+
+        public void Put<T>(T item, string endpoint)
         {
             HttpResponseMessage response =
                 client.PutAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
-            response.EnsureSuccessStatusCode();
+
         }
+
     }
 
 }

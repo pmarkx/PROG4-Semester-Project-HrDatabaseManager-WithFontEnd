@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace DCQEB4_HFT_2021221.Endpoint
 {
@@ -20,17 +21,22 @@ namespace DCQEB4_HFT_2021221.Endpoint
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddTransient<IDepartmentLogic, DepartmentLogic>();
-            services.AddTransient<IDepartmentRepository, DepartmentRepository>();
 
-            services.AddTransient<IEmployeeLogic, EmployeeLogic>();
-            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddControllers();
+            services.AddControllers().AddJsonOptions(x =>
+x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
             services.AddTransient<ISalaryLogic, SalaryLogic>();
             services.AddTransient<ISalaryRepository, SalaryRepository>();
 
+            services.AddTransient<IEmployeeLogic, EmployeeLogic>();
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+
+            services.AddTransient<IDepartmentLogic, DepartmentLogic>();
+            services.AddTransient<IDepartmentRepository, DepartmentRepository>();
+
             services.AddTransient<DbContext, HrDbContext>();
+            services.AddTransient<HrDbContext,HrDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
