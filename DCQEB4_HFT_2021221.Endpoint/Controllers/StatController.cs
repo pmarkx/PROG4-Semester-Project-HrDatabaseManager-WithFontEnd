@@ -21,7 +21,7 @@ namespace DCQEB4_HFT_2021221.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<DepartmentCost> AverageByBrands()
+        public IEnumerable<DepartmentCost> GetDepartmentCosts()
         {
             return cl.DepartmentCost();
         }

@@ -23,9 +23,9 @@ namespace DCQEB4_HFT_2021221.Endpoint
         {
 
             services.AddControllers();
-            services.AddControllers().AddJsonOptions(x =>
-x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
-
+//            services.AddControllers().AddJsonOptions(x =>
+//x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+        
             services.AddTransient<ISalaryLogic, SalaryLogic>();
             services.AddTransient<ISalaryRepository, SalaryRepository>();
 

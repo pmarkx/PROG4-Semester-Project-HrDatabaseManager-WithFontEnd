@@ -35,10 +35,10 @@ namespace DCQEB4_HFT_2021221.Logic
 
         public void Create(Salary newSal)
         {
-            if (newSal.ID < 1)
-            {
-                throw new ArgumentException("WrongID");
-            }
+            //if (newSal.ID < 1)
+            //{
+            //    throw new ArgumentException("WrongID");
+            //}
             if (newSal.EmployeeID<1)
             {
                 throw new ArgumentException("WrongID");

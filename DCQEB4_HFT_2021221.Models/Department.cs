@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum DepartmentType { It,Legal,Finance}
+public enum DepartmentType { It=1,Legal,Finance}
 namespace DCQEB4_HFT_2021221.Models
 {
     [Table("departments")]
@@ -28,6 +28,10 @@ namespace DCQEB4_HFT_2021221.Models
         public Department()
         {
             Employees = new HashSet<Employee>();
+        }
+        public override string ToString()
+        {
+            return "Id: " + ID + "\tDepartment Name: " + DepartmentName + "\tType: " + Type;
         }
 
     }

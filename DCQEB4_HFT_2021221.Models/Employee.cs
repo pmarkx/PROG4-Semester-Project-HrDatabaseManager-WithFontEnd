@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace DCQEB4_HFT_2021221.Models
 {
@@ -19,11 +20,11 @@ namespace DCQEB4_HFT_2021221.Models
         public string Name { get; set; }
 
         public string Email { get; set; }
-
+        
         [ForeignKey(nameof(Department))]
         public int DepartmentID { get; set; }
-
         [NotMapped]
+        [JsonIgnore]
         public virtual Department Department { get; set; }
 
         [NotMapped]
@@ -32,6 +33,10 @@ namespace DCQEB4_HFT_2021221.Models
         public Employee()
         {
             Salaries = new HashSet<Salary>();
+        }
+        public override string ToString()
+        {
+            return "Id: " + ID + "\tName: " + Name + "\tEmail: " + Email + "\tDepartment Id: " + DepartmentID;
         }
     }
 }

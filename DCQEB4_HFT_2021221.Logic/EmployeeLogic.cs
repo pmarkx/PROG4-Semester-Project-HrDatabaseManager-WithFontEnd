@@ -49,10 +49,10 @@ namespace DCQEB4_HFT_2021221.Logic
 
         public void Create(Employee newEmp)
         {
-            if (newEmp.ID < 1)
-            {
-                throw new ArgumentException("WrongID");
-            }
+            //if (newEmp.ID < 1)
+            //{
+            //    throw new ArgumentException("WrongID");
+            //}
             if (newEmp.Name.Length<=3)
             {
                 throw new ArgumentException("Name is invalid");

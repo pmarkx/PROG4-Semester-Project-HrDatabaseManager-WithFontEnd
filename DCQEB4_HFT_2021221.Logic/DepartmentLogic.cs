@@ -39,11 +39,11 @@ namespace DCQEB4_HFT_2021221.Logic
 
         public void Create(Department newDep)
         {
-            if (newDep.ID < 1)
-            {
-                throw new ArgumentException("WrongID");
-            }
-            if (newDep.DepartmentName.Length <= 5)
+            //if (newDep.ID < 1)
+            //{
+            //    throw new ArgumentException("WrongID");
+            //}
+            if (newDep.DepartmentName.Length <= 3)
             {
                 throw new ArgumentException("Name is invalid");
             }
