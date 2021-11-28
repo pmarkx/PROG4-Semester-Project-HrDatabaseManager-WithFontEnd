@@ -72,7 +72,7 @@ namespace DCQEB4_HFT_2021221.Logic
         {
             var a = from x in salrepo.GetAll()
                     group x by new { x.Employee.DepartmentID,x.Employee.Department.DepartmentName } into qq
-                    select new DepartmentCost(){ DepartmentName=qq.Key.DepartmentName,AvargePrice=qq.Average(x=>x.BaseSalary)};
+                    select new DepartmentCost(){ DepartmentName=qq.Key.DepartmentName,AvargeCost=qq.Average(x=>x.BaseSalary)};
             return a.ToList();
         }
 
@@ -93,6 +93,16 @@ namespace DCQEB4_HFT_2021221.Logic
         public void Update(Department updatedDep)
         {
             depRepo.Update(updatedDep);
+        }
+        public IList<Employee> ListAllEmpForOneDep(int id)
+        {
+            var res = depRepo.GetOne(id);
+            return res.Employees.ToList();
+        }
+        public IList<Salary> ListAllSalForOneEmp(int id)
+        {
+            var res = emprepo.GetOne(id);
+            return res.Salaries.ToList();
         }
     }
 }

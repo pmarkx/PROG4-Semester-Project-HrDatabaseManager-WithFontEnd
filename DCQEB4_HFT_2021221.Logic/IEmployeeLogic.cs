@@ -18,8 +18,7 @@ namespace DCQEB4_HFT_2021221.Logic
         void ChangeName(int id, string NewName);
         void ChangeEmail(int id, string NewEmail);
         void ChangeDepartment(int id, int NewDepID);
-        double EmployeeAvargeSalary(int id);
-        double EmployeeAvargeSalary(Employee emp);
+        IList<DepartmentCost> EmployeeAvargeSalary();
 
     }
 }

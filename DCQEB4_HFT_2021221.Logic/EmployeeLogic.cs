@@ -11,9 +11,11 @@ namespace DCQEB4_HFT_2021221.Logic
     public class EmployeeLogic : IEmployeeLogic
     {
         IEmployeeRepository EmpRepo;
-        public EmployeeLogic(IEmployeeRepository employeeRepository)
+        ISalaryRepository SalRepo;
+        public EmployeeLogic(IEmployeeRepository employeeRepository,ISalaryRepository salary)
         {
             EmpRepo = employeeRepository;
+            SalRepo = salary;
         }
 
         public void ChangeDepartment(int id, int NewDepID)
@@ -86,34 +88,13 @@ namespace DCQEB4_HFT_2021221.Logic
             EmpRepo.Delete(delete);
         }
 
-        public double EmployeeAvargeSalary(int id)
+        public IList<DepartmentCost> EmployeeAvargeSalary()
         {
-            if (id < 1)
-            {
-                throw new ArgumentException("WrongID");
-            }
-            Employee x=EmpRepo.GetOne(id);
-            double avarge = 0;
-            foreach (var item in x.Salaries)
-            {
-                avarge += item.BaseSalary;
-            }
-            return avarge / x.Salaries.Count();
-        }
 
-        public double EmployeeAvargeSalary(Employee emp)
-        {
-            if (emp.ID < 1)
-            {
-                throw new ArgumentException("WrongID");
-            }
-            Employee x = EmpRepo.GetOne(emp.ID);
-            double avarge = 0;
-            foreach (var item in x.Salaries)
-            {
-                avarge += item.BaseSalary;
-            }
-            return avarge / x.Salaries.Count();
+            var a = from x in SalRepo.GetAll()
+                    group x by new { x.EmployeeID, x.Employee.Name } into qq
+                    select new DepartmentCost() { DepartmentName = qq.Key.Name, AvargeCost = qq.Average(x => x.BaseSalary) };
+            return a.ToList();
         }
 
         public IList<Employee> GetAll()

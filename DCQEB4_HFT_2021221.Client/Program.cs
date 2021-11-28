@@ -23,7 +23,7 @@ namespace DCQEB4_HFT_2021221.Client
             main.Add("Department Menu", () => depmenu.Show());
             main.Add("Employee Menu", () => empmenu.Show());
             main.Add("Salary Menu", () => salmenu.Show());
-            main.Add("Special Menu", () => special.Show());
+            main.Add("Special Menu (NON-CRUD)", () => special.Show());
             main.Add("Quit", ()=>main.CloseMenu()) ;
 
             depmenu.Add("Back to Main Menu", () => depmenu.CloseMenu());
@@ -244,9 +244,40 @@ namespace DCQEB4_HFT_2021221.Client
                 Console.WriteLine("Done!");
                 Console.ReadKey();
             });
-            special.Add("All department Cost", () =>
+            special.Add("All department avarage salary", () =>
             {
                 var res = restService.Get<DepartmentCost>("/stat/GetDepartmentCosts");
+                foreach (var item in res)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+                Console.ReadLine();
+            });
+            special.Add("All employess avarge salary", () =>
+            {
+                var res = restService.Get<DepartmentCost>("/stat/AllEmpAvarageSalary");
+                foreach (var item in res)
+                {
+                    Console.WriteLine("Employee Name: "+item.DepartmentName+"\t Avarge Salary: "+item.AvargeCost);
+                }
+                Console.ReadLine();
+            });
+            special.Add("One Department and it's employees", () =>
+            {
+                Console.WriteLine("I need an ID!");
+                string input = Console.ReadLine();
+                var res = restService.Get<Employee>("/stat/GetEmpForOneDep/" + input);
+                foreach (var item in res)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+                Console.ReadLine();
+            });
+            special.Add("One Employee salaries", () =>
+            {
+                Console.WriteLine("I need an ID!");
+                string input = Console.ReadLine();
+                var res = restService.Get<Salary>("/stat/GetSalForOneEmp/" + input);
                 foreach (var item in res)
                 {
                     Console.WriteLine(item.ToString());
