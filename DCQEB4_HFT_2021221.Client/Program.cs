@@ -284,6 +284,15 @@ namespace DCQEB4_HFT_2021221.Client
                 }
                 Console.ReadLine();
             });
+            special.Add("Employee with the biggest salary", () =>
+            {
+                var res = restService.Get<Employee>("/stat/BiggestSalaryEmployee");
+                foreach (var item in res)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+                Console.ReadLine();
+            });
             main.Show();
             //HrDbContext data = new HrDbContext();
             //data.Employees.Select(x => x.Name).ToConsole("1");

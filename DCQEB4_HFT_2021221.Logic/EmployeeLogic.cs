@@ -18,6 +18,22 @@ namespace DCQEB4_HFT_2021221.Logic
             SalRepo = salary;
         }
 
+        public Employee BiggestSalaryEmployee()
+        {
+            var x = SalRepo.GetAll();
+            int max = 0;
+            Employee employee = new Employee();
+            foreach (var item in x)
+            {
+                if (item.BaseSalary>max)
+                {
+                    max = item.BaseSalary;
+                    employee = item.Employee;
+                }
+            }
+            return employee;
+        }
+
         public void ChangeDepartment(int id, int NewDepID)
         {
             if (id < 1||NewDepID<1)

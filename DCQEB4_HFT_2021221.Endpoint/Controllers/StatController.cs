@@ -44,6 +44,13 @@ namespace DCQEB4_HFT_2021221.Endpoint.Controllers
         {
             return deplogic.ListAllSalForOneEmp(id);
         }
+        [HttpGet]
+        public IEnumerable<Employee> BiggestSalaryEmployee()
+        {
+            List<Employee> emp = new List<Employee>();
+            emp.Add(emplogic.BiggestSalaryEmployee());
+            return emp;
+        }
 
     }
 }

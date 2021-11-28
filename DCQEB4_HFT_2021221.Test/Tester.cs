@@ -27,7 +27,7 @@ namespace DCQEB4_HFT_2021221.Test
         public Tester()
         {
             departmentLogic = new DepartmentLogic(Mockdepartmentrepo.Object,MockEmployeerepo.Object,MockSalaryRepo.Object);
-            employeeLogic = new EmployeeLogic(MockEmployeerepo.Object);
+            employeeLogic = new EmployeeLogic(MockEmployeerepo.Object,MockSalaryRepo.Object);
             salaryLogic = new SalaryLogic(MockSalaryRepo.Object);
             Mockdepartmentrepo.Setup(r => r.Create(It.IsAny<Department>()));
             MockEmployeerepo.Setup(r => r.Create(It.IsAny<Employee>()));
