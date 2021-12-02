@@ -12,20 +12,7 @@ namespace DCQEB4_HFT_2021221.Repository
     {
         public DepartmentRepository(HrDbContext contex) : base(contex)
         {
-        }
 
-        public void ChangeName(int id, string NewName)
-        {
-            var dep = GetAll().SingleOrDefault(x => x.ID == id);
-            dep.DepartmentName = NewName;
-            contex.SaveChanges();
-        }
-
-        public void ChangeType(int id, DepartmentType Newdeptype)
-        {
-            var dep = GetAll().SingleOrDefault(x => x.ID == id);
-            dep.Type = Newdeptype;
-            contex.SaveChanges();
         }
 
         public override void Delete(int id)

@@ -15,8 +15,6 @@ namespace DCQEB4_HFT_2021221.Logic
         void Create(Salary newSal);
         void Delete(int id);
         void Delete(Salary delete);
-        void ChangeDate(int id, DateTime NewDate);
-        void ChangeEmployee(int id, int NewEmpID);
 
     }
 }

@@ -12,27 +12,7 @@ namespace DCQEB4_HFT_2021221.Repository
     {
         public EmployeeRepository(HrDbContext contex) : base(contex)
         {
-        }
 
-        public void ChangeDepartment(int id, int NewDepID)
-        {
-            var emp = GetAll().SingleOrDefault(x => x.ID == id);
-            emp.DepartmentID = NewDepID;
-            contex.SaveChanges();
-        }
-
-        public void ChangeEmail(int id, string NewEmail)
-        {
-            var emp = GetAll().SingleOrDefault(x => x.ID == id);
-            emp.Email = NewEmail;
-            contex.SaveChanges();
-        }
-
-        public void ChangeName(int id, string NewName)
-        {
-            var emp = GetAll().SingleOrDefault(x => x.ID == id);
-            emp.Name = NewName;
-            contex.SaveChanges();
         }
 
         public override void Delete(int id)

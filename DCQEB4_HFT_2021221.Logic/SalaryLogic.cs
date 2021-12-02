@@ -15,23 +15,7 @@ namespace DCQEB4_HFT_2021221.Logic
         {
             SalRepo = salaryLogic;
         }
-        public void ChangeDate(int id, DateTime NewDate)
-        {
-            if (id < 1)
-            {
-                throw new ArgumentException("WrongID");
-            }
-            SalRepo.ChangeDate(id, NewDate);
-        }
 
-        public void ChangeEmployee(int id, int NewEmpID)
-        {
-            if (id < 1)
-            {
-                throw new ArgumentException("WrongID");
-            }
-            SalRepo.ChangeEmployee(id, NewEmpID);
-        }
 
         public void Create(Salary newSal)
         {

@@ -9,7 +9,6 @@ namespace DCQEB4_HFT_2021221.Repository
 {
     public interface ISalaryRepository:IRepository<Salary>
     {
-        void ChangeDate(int id, DateTime NewDate);
-        void ChangeEmployee(int id, int NewEmpID);
+
     }
 }

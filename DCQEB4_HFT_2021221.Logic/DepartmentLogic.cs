@@ -19,23 +19,6 @@ namespace DCQEB4_HFT_2021221.Logic
             emprepo = employeeRepository;
             salrepo = salaryRepository;
         }
-        public void ChangeName(int id, string NewName)
-        {
-            if (id<1)
-            {
-                throw new ArgumentException("WrongID");
-            }
-            depRepo.ChangeName(id,NewName);
-        }
-
-        public void ChangeType(int id, DepartmentType Newdeptype)
-        {
-            if (id < 1)
-            {
-                throw new ArgumentException("WrongID");
-            }
-            depRepo.ChangeType(id, Newdeptype);
-        }
 
         public void Create(Department newDep)
         {

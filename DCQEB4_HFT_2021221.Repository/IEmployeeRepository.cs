@@ -9,8 +9,6 @@ namespace DCQEB4_HFT_2021221.Repository
 {
     public interface IEmployeeRepository:IRepository<Employee>
     {
-        void ChangeName(int id, string NewName);
-        void ChangeEmail(int id, string NewEmail);
-        void ChangeDepartment(int id, int NewDepID);
+
     }
 }

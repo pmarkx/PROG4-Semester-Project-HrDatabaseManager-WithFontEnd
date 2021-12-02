@@ -15,9 +15,6 @@ namespace DCQEB4_HFT_2021221.Logic
         void Create(Employee newEmp);
         void Delete(int id);
         void Delete(Employee delete);
-        void ChangeName(int id, string NewName);
-        void ChangeEmail(int id, string NewEmail);
-        void ChangeDepartment(int id, int NewDepID);
         IList<DepartmentCost> EmployeeAvargeSalary();
         Employee BiggestSalaryEmployee();
 

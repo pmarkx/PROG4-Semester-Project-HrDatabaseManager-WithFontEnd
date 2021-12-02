@@ -12,20 +12,7 @@ namespace DCQEB4_HFT_2021221.Repository
     {
         public SalaryRepository(HrDbContext contex) : base(contex)
         {
-        }
 
-        public void ChangeDate(int id, DateTime NewDate)
-        {
-            var sal = GetAll().FirstOrDefault(x => x.ID == id);
-            sal.Date = NewDate;
-            contex.SaveChanges();
-        }
-
-        public void ChangeEmployee(int id, int NewEmpID)
-        {
-            var sal = GetAll().FirstOrDefault(x => x.ID == id);
-            sal.EmployeeID = NewEmpID;
-            contex.SaveChanges();
         }
 
         public override void Delete(int id)

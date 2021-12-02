@@ -34,37 +34,6 @@ namespace DCQEB4_HFT_2021221.Logic
             return employee;
         }
 
-        public void ChangeDepartment(int id, int NewDepID)
-        {
-            if (id < 1||NewDepID<1)
-            {
-                throw new ArgumentException("WrongID");
-            }
-            EmpRepo.ChangeDepartment(id, NewDepID);
-        }
-
-        public void ChangeEmail(int id, string NewEmail)
-        {
-            if (id < 1)
-            {
-                throw new ArgumentException("WrongID");
-            }
-            if (!NewEmail.Contains("@"))
-            {
-                throw new AggregateException("Wrong Email format");
-            }
-            EmpRepo.ChangeEmail(id,NewEmail);
-        }
-
-        public void ChangeName(int id, string NewName)
-        {
-            if (id < 1)
-            {
-                throw new ArgumentException("WrongID");
-            }
-            EmpRepo.ChangeName(id, NewName);
-        }
-
         public void Create(Employee newEmp)
         {
             //if (newEmp.ID < 1)

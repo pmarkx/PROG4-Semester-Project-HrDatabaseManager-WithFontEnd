@@ -9,8 +9,6 @@ namespace DCQEB4_HFT_2021221.Repository
 {
     public interface IDepartmentRepository:IRepository<Department>
     {
-        void ChangeName(int id, string NewName);
 
-        void ChangeType(int id, DepartmentType Newdeptype);
     }
 }
