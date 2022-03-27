@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DCQEB4_HFT_2021221.Client
 {
-    public class RestService
+    class RestService
     {
         HttpClient client;
 
@@ -18,12 +15,14 @@ namespace DCQEB4_HFT_2021221.Client
 
         private void Init(string baseurl)
         {
-            client = new HttpClient();
-            client.BaseAddress = new Uri(baseurl);
+            client = new HttpClient
+            {
+                BaseAddress = new Uri(baseurl)
+            };
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
-                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue
-                ("application/json"));
+            new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue
+            ("application/json"));
             try
             {
                 client.GetAsync("").GetAwaiter().GetResult();
@@ -35,9 +34,9 @@ namespace DCQEB4_HFT_2021221.Client
 
         }
 
-        public List<T> Get<T>(string endpoint)
+        public IEnumerable<T> Get<T>(string endpoint)
         {
-            List<T> items = new List<T>();
+            List<T> items = new();
             HttpResponseMessage response = client.GetAsync(endpoint).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
@@ -48,8 +47,7 @@ namespace DCQEB4_HFT_2021221.Client
 
         public T GetSingle<T>(string endpoint)
         {
-            T item = default(T);
-
+            T item = default;
             HttpResponseMessage response = client.GetAsync(endpoint).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
@@ -60,7 +58,7 @@ namespace DCQEB4_HFT_2021221.Client
 
         public T Get<T>(int id, string endpoint)
         {
-            T item = default(T);
+            T item = default;
             HttpResponseMessage response = client.GetAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
@@ -72,7 +70,7 @@ namespace DCQEB4_HFT_2021221.Client
         public void Post<T>(T item, string endpoint)
         {
             HttpResponseMessage response =
-                client.PostAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
+            client.PostAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
 
             response.EnsureSuccessStatusCode();
         }
@@ -80,7 +78,7 @@ namespace DCQEB4_HFT_2021221.Client
         public void Delete(int id, string endpoint)
         {
             HttpResponseMessage response =
-                client.DeleteAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
+            client.DeleteAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
 
             response.EnsureSuccessStatusCode();
         }
@@ -88,10 +86,10 @@ namespace DCQEB4_HFT_2021221.Client
         public void Put<T>(T item, string endpoint)
         {
             HttpResponseMessage response =
-                client.PutAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
+            client.PutAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
 
+            response.EnsureSuccessStatusCode();
         }
 
     }
-
 }
