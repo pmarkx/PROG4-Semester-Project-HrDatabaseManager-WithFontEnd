@@ -46,8 +46,8 @@ namespace DCQEB4_HFT_2021221.WPFClient
             client.BaseAddress = new Uri(baseurl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
-            new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue
-            ("application/json"));
+                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue
+                ("application/json"));
             try
             {
                 client.GetAsync("").GetAwaiter().GetResult();
@@ -158,7 +158,7 @@ namespace DCQEB4_HFT_2021221.WPFClient
         public async Task PostAsync<T>(T item, string endpoint)
         {
             HttpResponseMessage response =
-            await client.PostAsJsonAsync(endpoint, item);
+                await client.PostAsJsonAsync(endpoint, item);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -171,7 +171,7 @@ namespace DCQEB4_HFT_2021221.WPFClient
         public void Post<T>(T item, string endpoint)
         {
             HttpResponseMessage response =
-            client.PostAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
+                client.PostAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
 
             if (!response.IsSuccessStatusCode)
             {
@@ -184,7 +184,7 @@ namespace DCQEB4_HFT_2021221.WPFClient
         public async Task DeleteAsync(int id, string endpoint)
         {
             HttpResponseMessage response =
-            await client.DeleteAsync(endpoint + "/" + id.ToString());
+                await client.DeleteAsync(endpoint + "/" + id.ToString());
 
             if (!response.IsSuccessStatusCode)
             {
@@ -198,7 +198,7 @@ namespace DCQEB4_HFT_2021221.WPFClient
         public void Delete(int id, string endpoint)
         {
             HttpResponseMessage response =
-            client.DeleteAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
+                client.DeleteAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
 
             if (!response.IsSuccessStatusCode)
             {
@@ -212,7 +212,7 @@ namespace DCQEB4_HFT_2021221.WPFClient
         public async Task PutAsync<T>(T item, string endpoint)
         {
             HttpResponseMessage response =
-            await client.PutAsJsonAsync(endpoint, item);
+                await client.PutAsJsonAsync(endpoint, item);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -226,7 +226,7 @@ namespace DCQEB4_HFT_2021221.WPFClient
         public void Put<T>(T item, string endpoint)
         {
             HttpResponseMessage response =
-            client.PutAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
+                client.PutAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
 
             if (!response.IsSuccessStatusCode)
             {
@@ -253,8 +253,8 @@ namespace DCQEB4_HFT_2021221.WPFClient
         public NotifyService(string url)
         {
             conn = new HubConnectionBuilder()
-            .WithUrl(url)
-            .Build();
+                .WithUrl(url)
+                .Build();
 
             conn.Closed += async (error) =>
             {
@@ -407,7 +407,9 @@ namespace DCQEB4_HFT_2021221.WPFClient
                     });
                 });
             }
+
         }
+
 
     }
 }
