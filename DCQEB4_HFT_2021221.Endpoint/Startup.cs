@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
+using DCQEB4_HFT_2021221.Endpoint.Services;
 
 namespace DCQEB4_HFT_2021221.Endpoint
 {
@@ -38,12 +39,11 @@ namespace DCQEB4_HFT_2021221.Endpoint
 
             services.AddTransient<DbContext, HrDbContext>();
             services.AddTransient<HrDbContext,HrDbContext>();
-            services.AddSwaggerGen(
-                c =>
-                {
-                    c.SwaggerDoc("v1",new OpenApiInfo{Title = "HRDB.Endpoint", Version = "v1"});
-                }
-                );
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",new OpenApiInfo{Title = "HRDB.Endpoint", Version = "v1"});
+            });
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +62,11 @@ namespace DCQEB4_HFT_2021221.Endpoint
             });
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HRDB.Endpoint"));
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
+            });
         }
     }
 }
