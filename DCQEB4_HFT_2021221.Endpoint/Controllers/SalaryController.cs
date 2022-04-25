@@ -36,20 +36,17 @@ namespace DCQEB4_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Salary value)
         {
             sal.Create(value);
-            hub.Clients.All.SendAsync("SalCreated", value);
         }
         [HttpPut]
         public void Put([FromBody] Salary value)
         {
             sal.Update(value);
-            hub.Clients.All.SendAsync("SalUpdated", value);
         }
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             var saltodelete = sal.GetOne(id);
             sal.Delete(id);
-            hub.Clients.All.SendAsync("DeletedSal", saltodelete);
         }
     }
 }

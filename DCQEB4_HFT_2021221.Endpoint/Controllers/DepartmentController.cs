@@ -36,20 +36,20 @@ namespace DCQEB4_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Department value)
         {
             dep.Create(value);
-            hub.Clients.All.SendAsync("DepCreated", value);
+            hub.Clients.All.SendAsync("DepartmentCreated", value);
         }
         [HttpPut]
         public void Put([FromBody] Department value)
         {
             dep.Update(value);
-            hub.Clients.All.SendAsync("DepUpdated", value);
+            hub.Clients.All.SendAsync("DepartmentUpdated", value);
         }
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             var deptodelete=dep.GetOne(id);
             dep.Delete(id);
-            hub.Clients.All.SendAsync("DepDeleted", deptodelete);
+            hub.Clients.All.SendAsync("DepartmentDeleted", deptodelete);
         }
     }
 }

@@ -36,20 +36,20 @@ namespace DCQEB4_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Employee value)
         {
             emp.Create(value);
-            hub.Clients.All.SendAsync("CreateEmployee", value);
+            hub.Clients.All.SendAsync("EmployeeCreated", value);
         }
         [HttpPut]
         public void Put([FromBody] Employee value)
         {
             emp.Update(value);
-            hub.Clients.All.SendAsync("UpdateEmployee", value);
+            hub.Clients.All.SendAsync("EmployeeUpdated", value);
         }
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             var emptodelete = emp.GetOne(id);
             emp.Delete(id);
-            hub.Clients.All.SendAsync("DeleteEmployee", emptodelete);
+            hub.Clients.All.SendAsync("EmployeeUpdated", emptodelete);
         }
     }
 }
