@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using DCQEB4_HFT_2021221.Endpoint.Services;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace DCQEB4_HFT_2021221.Endpoint
 {
@@ -39,11 +40,12 @@ namespace DCQEB4_HFT_2021221.Endpoint
 
             services.AddTransient<DbContext, HrDbContext>();
             services.AddTransient<HrDbContext,HrDbContext>();
+            services.AddSignalR();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",new OpenApiInfo{Title = "HRDB.Endpoint", Version = "v1"});
             });
-            services.AddSignalR();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,16 +54,24 @@ namespace DCQEB4_HFT_2021221.Endpoint
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HRDB.Endpoint v1"));
             }
+
+            app.UseExceptionHandler(c => c.Run(async context =>
+            {
+                var exception = context.Features
+                    .Get<IExceptionHandlerPathFeature>()
+                    .Error;
+                var response = new { Msg = exception.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
+
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HRDB.Endpoint"));
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -6,6 +6,8 @@ using DCQEB4_HFT_2021221.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
+using DCQEB4_HFT_2021221.Endpoint.Services;
 
 namespace DCQEB4_HFT_2021221.Endpoint.Controllers
 {
@@ -16,12 +18,13 @@ namespace DCQEB4_HFT_2021221.Endpoint.Controllers
         IDepartmentLogic deplogic;
         IEmployeeLogic emplogic;
         ISalaryLogic sallogic;
-
-        public StatController(IDepartmentLogic deplogic, IEmployeeLogic emplogic, ISalaryLogic sallogic)
+        IHubContext<SignalRHub> hub;
+        public StatController(IDepartmentLogic deplogic, IEmployeeLogic emplogic, ISalaryLogic sallogic,IHubContext<SignalRHub> hub)
         {
             this.deplogic = deplogic;
             this.emplogic = emplogic;
             this.sallogic = sallogic;
+            this.hub = hub;
         }
 
         [HttpGet]
