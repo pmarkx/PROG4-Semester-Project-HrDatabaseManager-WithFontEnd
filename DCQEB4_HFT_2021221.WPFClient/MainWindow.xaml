@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DCQEB4_HFT_2021221.WPFClient"
         mc:Ignorable="d"
-        Title="HRDBEditor" Height="500" Width="850">
+        Title="HRDBEditor" Height="550" Width="900">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -30,6 +30,7 @@
             <TextBox Text="{Binding SelectedEmployee.Email}" Padding="10" Margin="0,0,0,20"/>
             <Button Content="Create Employee" Command="{Binding CreateEmployee}" Margin="10" Padding="10"/>
             <Button Content="Delete Employee" Command="{Binding DeleteEmployee}" Margin="10" Padding="10"/>
+            <Label Content="You can only delete Employee with no Salaries!" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="Red"/>
             <Button Content="Update Employee" Command="{Binding UpdateEmployee}" Margin="10" Padding="10"/>
             <Button Content="Change to Department Controll" Command="{Binding Change}" Margin="10" Padding="10"/>
         </StackPanel>

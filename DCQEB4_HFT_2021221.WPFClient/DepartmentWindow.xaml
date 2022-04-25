@@ -25,12 +25,11 @@
             <Label Content="Name" Background="LightSeaGreen" Padding="10"/>
             <TextBox Text="{Binding SelectedDepartment.DepartmentName}" Padding="10"/>
             <Label Content="DepartmentID" Background="LightSeaGreen" Padding="10"/>
-            <TextBox Text="{Binding SelectedDepartment.ID}" Padding="10"/>
-            <Label Content="Type" Background="LightSeaGreen" Padding="10"/>
-            <TextBox Text="{Binding SelectedDepartment.Type}" Padding="10" Margin="0,0,0,20"/>
-            <Button Content="Create Employee" Command="{Binding CreateEmployee}" Margin="10" Padding="10"/>
-            <Button Content="Delete Employee" Command="{Binding DeleteEmployee}" Margin="10" Padding="10"/>
-            <Button Content="Update Employee" Command="{Binding UpdateEmployee}" Margin="10" Padding="10"/>
+            <Label Content="{Binding SelectedDepartment.ID}" Padding="10"/>
+            <Button Content="Create Department" Command="{Binding CreateDepartment}" Margin="10" Padding="10"/>
+            <Button Content="Delete Department" Command="{Binding DeleteDepartment}" Margin="10" Padding="10"/>
+            <Label Content="You can only delete Department with no Employees!" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="Red"/>
+            <Button Content="Update Department" Command="{Binding UpdateDepartment}" Margin="10" Padding="10"/>
         </StackPanel>
     </Grid>
 </Window>

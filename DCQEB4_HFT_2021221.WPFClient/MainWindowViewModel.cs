@@ -15,8 +15,11 @@ namespace DCQEB4_HFT_2021221.WPFClient
     public class MainWindowViewModel:ObservableRecipient
     {
         public ICommand CreateEmployee { get; set; }
+        public ICommand CreateDepartment { get; set; }
         public ICommand UpdateEmployee { get; set; }
+        public ICommand UpdateDepartment { get; set; }
         public ICommand DeleteEmployee { get; set; }
+        public ICommand DeleteDepartment { get; set; }
         public ICommand Change { get; set; }
         private Employee selectedEmployee;
         private Department selectedDepartment;
@@ -36,7 +39,7 @@ namespace DCQEB4_HFT_2021221.WPFClient
                         Employees=value.Employees
                     };
                     OnPropertyChanged();
-
+                    (DeleteDepartment as RelayCommand).NotifyCanExecuteChanged();
                 }
             }
         }
@@ -99,13 +102,35 @@ namespace DCQEB4_HFT_2021221.WPFClient
                 },
                 () =>
                 {
-                    return SelectedEmployee != null;
+                    return SelectedEmployee != null && selectedEmployee.Salaries.Count==0;
                 });
                 UpdateEmployee = new RelayCommand(()=>
                 {
                     Employees.Update(SelectedEmployee);
                 });
-                selectedEmployee = new Employee() { DepartmentID=1};
+                selectedDepartment = new Department() {Type=DepartmentType.It};
+                CreateDepartment = new RelayCommand(() =>
+                {
+                    Departments.Add(new Department()
+                    {
+                        DepartmentName=selectedDepartment.DepartmentName,
+                        Type=selectedDepartment.Type
+                    });
+                });
+                DeleteDepartment = new RelayCommand(() =>
+                {
+                    Departments.Delete(selectedDepartment.ID);
+                },
+                () =>
+                {
+                    return selectedDepartment != null && selectedDepartment.Employees.Count == 0;
+                });
+                UpdateDepartment = new RelayCommand(() =>
+                {
+                    Departments.Update(selectedDepartment);
+                });
+                selectedEmployee = new Employee() { DepartmentID = 1 };
+                selectedDepartment=new Department() {Type=DepartmentType.It};
             }
         }
     }
