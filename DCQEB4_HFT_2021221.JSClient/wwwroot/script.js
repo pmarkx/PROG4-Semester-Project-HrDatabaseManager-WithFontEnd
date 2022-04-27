@@ -1,15 +1,23 @@
 ﻿let departments = [];
 
-fetch('http://localhost:50620/department')
-    .then(x => x.json())
-    .then(y => {
-        departments = y;
-        console.log(departments);
-        display();
-    });
+getdata();
+
+async function getdata() {
+    await fetch('http://localhost:50620/department')
+        .then(x => x.json())
+        .then(y => {
+            departments = y;
+            console.log(departments);
+            display();
+        });
+}
+
+
+
 
 
 function display() {
+    document.getElementById('resultarea').innerHTML = "";
     departments.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.id + "</td><td>"
@@ -25,8 +33,11 @@ function create() {
         body: JSON.stringify(
             { departmentName: name }),
     })
-        .then(response => response.json())
-        .then(data => { console.log('Success:', data); })
+        .then(response => response)
+        .then(data =>
+        {
+            console.log('Success:', data);
+            getdata();
+        })
         .catch((error) => { console.error('Error:', error); });
-    display();
 }
