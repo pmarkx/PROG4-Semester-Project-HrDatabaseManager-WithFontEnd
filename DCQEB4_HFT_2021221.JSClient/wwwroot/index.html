@@ -10,7 +10,7 @@
     <h1>Department List</h1>
     <div id="formdiv">
         <label>Department Name</label>
-        <input type="text" id="departmentname"/>
+        <input type="text" id="departmentname" />
         <button type="button" onclick="create()">Add Department</button>
     </div>
 
@@ -19,12 +19,14 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody id="resultarea">
         </tbody>
     </table>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
