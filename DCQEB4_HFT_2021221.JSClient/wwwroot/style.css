@@ -12,6 +12,8 @@ table,th,td{
 th{
     background-color:lightgoldenrodyellow;
 }
+
+
 #formdiv{
     display:flex;
     flex-direction:column;
@@ -27,3 +29,17 @@ th{
 table button{
     padding: 2px;
 }
+#updateformdiv {
+    display: none;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+    #updateformdiv label, button, input {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    #updateformdiv label {
+        font-weight: bolder;
+    }

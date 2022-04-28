@@ -1,5 +1,7 @@
 ﻿let departments = [];
 let connection = null;
+let updatedDepartmentId = -1;
+
 getdata();
 setupSignalR();
 
@@ -14,6 +16,10 @@ function setupSignalR() {
     });
 
     connection.on("DepartmentDeleted", (user, message) => {
+        getdata();
+    });
+
+    connection.on("DepartmentUpdated", (user, message) => {
         getdata();
     });
 
@@ -49,9 +55,16 @@ function display() {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.id + "</td><td>"
             + t.departmentName + "</td><td>" +
-            `<button type="button" onclick="remove(${t.id})">Delete</button>`
+        `<button type="button" onclick="remove(${t.id})">Delete</button>` +
+        `<button type="button" onclick="showupdate(${t.id})">Update</button>`
             + "</td></tr>";
     });
+}
+
+function showupdate(id) {
+    document.getElementById('updateddepartmentname').value = departments.find(t => t['id'] == id)['departmentName'];
+    document.getElementById('updateformdiv').style.display = 'flex';
+    updatedDepartmentId = id;
 }
 
 function remove(id) {
@@ -79,6 +92,24 @@ function create() {
         .then(response => response)
         .then(data =>
         {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
+}
+
+function update() {
+    document.getElementById('updateformdiv').style.display = 'none';
+    let name = document.getElementById('updateddepartmentname').value;
+
+    fetch('http://localhost:50620/department', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            { departmentName: name, id: updatedDepartmentId }),
+    })
+        .then(response => response)
+        .then(data => {
             console.log('Success:', data);
             getdata();
         })
